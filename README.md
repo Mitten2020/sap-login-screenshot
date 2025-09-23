@@ -25,9 +25,6 @@
 ├── package.json # Node.js 项目配置
 └── README.md # 项目说明文档
 
-yaml
-复制代码
-
 ---
 
 ## 🚀 部署步骤
@@ -41,8 +38,6 @@ yaml
 在你的仓库里，依次进入：
 Settings → Secrets and variables → Actions → New repository secret
 
-yaml
-复制代码
 
 添加以下 4 个 Secrets：
 
@@ -65,8 +60,6 @@ yaml
 如果不想等 10 天，可以手动执行一次：
 Actions → SAP BTP Auto Login → Run workflow
 
-yaml
-复制代码
 
 ---
 
@@ -87,8 +80,6 @@ markdown
 失败时，会收到：
 ❌ SAP BTP 操作失败截图
 
-yaml
-复制代码
 并附带错误页面截图。
 
 ---
@@ -104,8 +95,6 @@ yaml
 下载方式：  
 Actions → 选择对应运行记录 → Artifacts → sap-btp-screenshots
 
-yaml
-复制代码
 
 ---
 
