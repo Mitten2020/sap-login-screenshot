@@ -62,9 +62,20 @@ async function sendToTelegram(filePath, caption) {
     await sendToTelegram(loginScreenshot, "✅ SAP BTP 登录成功页面");
 
     // Step 4: 点击 “转到您的试用账户”
-    console.log("👉 查找并点击 '转到您的试用账户'...");
+    console.log("👉 检测并关闭 Consent Banner...");
+    const consentButton = await page.$('#truste-consent-button');
+    if (consentButton) {
+    await consentButton.click();
+    await page.waitForTimeout(1000);
+    }
+
+    console.log("👉 点击 '转到您的试用账户'...");
     await page.waitForSelector(SELECTORS.goToTrial, { timeout: 20000 });
-    await page.click(SELECTORS.goToTrial);
+    await page.click(SELECTORS.goToTrial, { force: true });
+
+    // 等待试用账户页面加载
+    await page.waitForTimeout(8000);
+
 
     // 等待试用账户页面加载
     await page.waitForTimeout(8000);
