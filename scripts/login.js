@@ -66,11 +66,11 @@ async function sendToTelegram(filePath, caption) {
     const consentButton = await page.$('#truste-consent-button');
     if (consentButton) {
     await consentButton.click();
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(10000);
     }
 
     console.log("👉 点击 '转到您的试用账户'...");
-    await page.waitForSelector(SELECTORS.goToTrial, { timeout: 40000 });
+    await page.waitForSelector(SELECTORS.goToTrial, { timeout: 20000 });
     await page.click(SELECTORS.goToTrial, { force: true });
 
     // 等待试用账户页面加载
