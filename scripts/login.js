@@ -74,11 +74,11 @@ async function sendToTelegram(filePath, caption) {
     await page.click(SELECTORS.goToTrial, { force: true });
 
     // 等待试用账户页面加载
-    await page.waitForTimeout(8000);
+    await page.waitForTimeout(10000);
 
 
     // 等待试用账户页面加载
-    await page.waitForTimeout(8000);
+    await page.waitForTimeout(20000);
 
     // Step 5: 截图试用账户页面
     const trialScreenshot = "trial-account.png";
