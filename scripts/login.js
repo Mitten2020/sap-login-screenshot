@@ -54,12 +54,15 @@ async function sendToTelegram(filePath, caption) {
     await page.click(SELECTORS.passwordSubmit);
 
     // 等待登录完成
-    await page.waitForTimeout(8000);
+    await page.waitForTimeout(15000);
 
     // Step 3: 截图登录后的页面
     const loginScreenshot = "login-success.png";
     await page.screenshot({ path: loginScreenshot, fullPage: true });
     await sendToTelegram(loginScreenshot, "✅ SAP BTP 登录成功页面");
+
+// ... 继续寻找元素
+await page.waitForSelector(SELECTORS.goToTrial, { timeout: 20000 });
 
     // Step 4: 点击 “转到您的试用账户”
     console.log("👉 检测并关闭 Consent Banner...");
