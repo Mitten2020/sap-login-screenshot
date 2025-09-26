@@ -56,13 +56,7 @@ async function sendToTelegram(filePath, caption) {
     // 等待登录完成
     await page.waitForTimeout(8000);
 
-        // Step 4: 点击 “转到您的试用账户”
-    console.log("👉 检测并关闭 Consent Banner...");
-    const consentButton = await page.$('#truste-consent-button');
-    if (consentButton) {
-    await consentButton.click();
-    await page.waitForTimeout(1000);
-    }
+
 
     // Step 3: 截图登录后的页面
     const loginScreenshot = "login-success.png";
@@ -70,7 +64,13 @@ async function sendToTelegram(filePath, caption) {
     await sendToTelegram(loginScreenshot, "✅ SAP BTP 登录成功页面");
 
 
-    await page.waitForTimeout(8000);
+    // Step 4: 点击 “转到您的试用账户”
+    console.log("👉 检测并关闭 Consent Banner...");
+    const consentButton = await page.$('#truste-consent-button');
+    if (consentButton) {
+    await consentButton.click();
+    await page.waitForTimeout(1000);
+    }
 
 
     console.log("👉 点击 '转到您的试用账户'...");
