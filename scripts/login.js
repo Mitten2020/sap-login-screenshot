@@ -91,7 +91,7 @@ for (const selector of consentSelectors) {
 }
 
 
-    console.log("👉 点击 '转到您的试用账户'...");
+    console.log("👉 寻找并点击 'Go ToYour Trial Account' 按钮...");
     await page.waitForSelector(SELECTORS.goToTrial, { timeout: 20000 });
     await page.click(SELECTORS.goToTrial, { force: true });
 
