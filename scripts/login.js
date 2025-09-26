@@ -22,7 +22,7 @@ async function sendToTelegram(filePath, caption) {
     emailSubmit: 'button[type="submit"], button[id="continue"], #logOnFormSubmit',
     passwordInput: 'input[type="password"], input[id="j_password"]',
     passwordSubmit: 'button[type="submit"], #logOnFormSubmit',
-    goToTrial: 'a:has-text("Go ToYour Trial Account"), button:has-text("Go ToYour Trial Account")'
+    goToTrial: 'a:has-text("Go To Your Trial Account"), button:has-text("Go To Your Trial Account")'
   };
 
   let browser;
