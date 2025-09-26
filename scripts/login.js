@@ -56,31 +56,22 @@ async function sendToTelegram(filePath, caption) {
     // 等待登录完成
     await page.waitForTimeout(8000);
 
+        // Step 4: 点击 “转到您的试用账户”
+    console.log("👉 检测并关闭 Consent Banner...");
+    const consentButton = await page.$('#truste-consent-button');
+    if (consentButton) {
+    await consentButton.click();
+    await page.waitForTimeout(1000);
+    }
+
     // Step 3: 截图登录后的页面
     const loginScreenshot = "login-success.png";
     await page.screenshot({ path: loginScreenshot, fullPage: true });
     await sendToTelegram(loginScreenshot, "✅ SAP BTP 登录成功页面");
 
-    // Step 4: 点击 “转到您的试用账户”
-    //console.log("👉 检测并关闭 Consent Banner...");
-    //const consentButton = await page.$('#truste-consent-button');
-    //if (consentButton) {
-    //await consentButton.click();
-    //await page.waitForTimeout(1000);
-    //}
 
-        // 处理可能的 Cookie 同意横幅
-    console.log("🍪 检查 Cookie 同意横幅...");
-    try {
-      const consentButton = await page.waitForSelector(SELECTORS.consentBanner, { timeout: 5000 });
-      if (consentButton) {
-        await consentButton.click();
-        console.log("✅ 已关闭 Cookie 横幅");
-        await page.waitForTimeout(2000);
-      }
-    } catch (error) {
-      console.log("ℹ️ 未找到 Cookie 横幅或已超时");
-    }
+    await page.waitForTimeout(8000);
+
 
     console.log("👉 点击 '转到您的试用账户'...");
     await page.waitForSelector(SELECTORS.goToTrial, { timeout: 20000 });
